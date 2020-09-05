@@ -114,9 +114,9 @@ function changePlayerPosition(evt) {
 
 
 function changePlayerPositionOnCanvas() {
-    if(isUp === true) {
+    if(isUp === true && players[0].y >= 0) {
         players[0].y -= 3;
-    } else if (isDown === true) {
+    } else if (isDown === true && players[0].y + players[0].height <= canvas.height) {
         players[0].y += 3;
     }
 }
@@ -181,9 +181,9 @@ function isBallTouchWall() {
 
 
 function changeEnemyPosition() {
-    if (ball.y > players[1].y + (players[1].height / 2)) {
+    if (ball.y > players[1].y + (players[1].height / 2) && players[1].y + players[1].height <= canvas.height) {
         players[1].y += 3;
-    } else if (ball.y < players[1].y + 10) {
+    } else if (ball.y < players[1].y + 10 && players[1].y >= 0 ) {
         players[1].y -= 3;
     }
 }
