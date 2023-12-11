@@ -30,7 +30,7 @@ let players = [
     }
 ];
 
-let isUp = false, isDown = false;
+let isUp = false, isDown = false, isEnemyUp = true, isEnemyDown = false;;
 
 const ballDirections = [45, 135, 225, 315]; 
 let ball = {
@@ -97,11 +97,11 @@ function changePlayerPosition(evt) {
     if (evt.type == "keydown") {
         console.log(true);
         switch(evt.keyCode) {
-            case 38:
+            case 87:
                 isUp = true;
                 isDown = false;
                 break;
-            case 40:
+            case 83:
                 isUp = false;
                 isDown = true;
                 break;
@@ -109,6 +109,23 @@ function changePlayerPosition(evt) {
     } else if (evt.type == "keyup") {
         isUp = false;
         isDown = false;
+    }
+
+    if (evt.type == "keydown") {
+        console.log(true);
+        switch(evt.keyCode) {
+            case 38:
+                isEnemyUp = true;
+                isEnemyDown = false;
+                break;
+            case 40:
+                isEnemyUp = false;
+                isEnemyDown = true;
+                break;
+        }
+    } else if (evt.type == "keyup") {
+        isEnemyUp = false;
+        isEnemyDown = false;
     }
 }
 
@@ -118,6 +135,12 @@ function changePlayerPositionOnCanvas() {
         players[0].y -= 3;
     } else if (isDown === true && players[0].y + players[0].height <= canvas.height) {
         players[0].y += 3;
+    }
+
+    if(isEnemyUp === true && players[1].y >= 0) {
+        players[1].y -= 3;
+    } else if (isEnemyDown === true && players[1].y + players[1].height <= canvas.height) {
+        players[1].y += 3;
     }
 }
 
@@ -175,15 +198,5 @@ function isBallTouchWall() {
             direction: ballDirections[Math.floor(Math.random() * 4)],
             radius: 15
         }
-    }
-}
-
-
-
-function changeEnemyPosition() {
-    if (ball.y > players[1].y + (players[1].height / 2) && players[1].y + players[1].height <= canvas.height) {
-        players[1].y += 3;
-    } else if (ball.y < players[1].y + 10 && players[1].y >= 0 ) {
-        players[1].y -= 3;
     }
 }
