@@ -41,7 +41,7 @@ let ball = {
 }
 
 
-document.addEventListener('keydown', changePlayerPosition);
+document.addEventListener('keypress', changePlayerPosition);
 document.addEventListener('keyup', changePlayerPosition);
 
 
