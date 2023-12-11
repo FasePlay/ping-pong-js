@@ -52,7 +52,6 @@ function drawGame() {
     drawElements();
     changePlayerPositionOnCanvas();
     changeBallPosition();
-    changeEnemyPosition();
 }
 
 
