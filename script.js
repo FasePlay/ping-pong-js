@@ -30,7 +30,7 @@ let players = [
     }
 ];
 
-let isUp = false, isDown = false, isEnemyUp = true, isEnemyDown = false;;
+let isUp = false, isDown = false, isEnemyUp = false, isEnemyDown = false;;
 
 const ballDirections = [45, 135, 225, 315]; 
 let ball = {
